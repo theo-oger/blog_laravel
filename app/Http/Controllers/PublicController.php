@@ -20,13 +20,12 @@ class PublicController extends Controller
     ]);
 }
 
-public function show( Article $article)
+public function show(User $user, Article $article)
 {
-    $articles = Article::where('user_id', $article->user_id)->where('draft', 0)->get();
-
- return view('articles.show', [
-            'article' => $article,
-            'articles' => $articles
-        ]);
+    return view('public.show', [
+        'article' => $article
+    ]);
 }
+
+
 }
