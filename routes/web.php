@@ -17,9 +17,7 @@ use App\Http\Controllers\CommentController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PublicController::class, 'home'])->name('home');
 
 
 Route::middleware('auth')->group(function () {
@@ -33,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/articles/{article}/update', [UserController::class, 'update'])->name('articles.update');
     Route::get('/articles/{article}/remove', [UserController::class, 'remove'])->name('articles.remove');
     Route::post('/comments/store', [CommentController::class, 'store'])->name('comments.store');
+    Route::get('/articles/{article}/like', [UserController::class, 'like'])->name('article.like');
 
 });
 
